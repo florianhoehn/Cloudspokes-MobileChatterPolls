@@ -1,0 +1,74 @@
+<project name="Sample usage of Salesforce Ant tasks" default="test" basedir="." xmlns:sf="antlib:com.salesforce">
+
+    <property file="build.properties"/>
+    <property environment="env"/>
+
+    <target name="compile">
+      <sf:deploy username="${sf.username}" 
+                 password="${sf.password}" 
+                 serverurl="${sf.serverurl}"
+                 deployRoot="src"
+                 runAllTests="false"
+                 checkOnly="true"/>
+    </target>
+
+    <target name="test">
+      <sf:deploy username="${sf.username}" 
+                 password="${sf.password}" 
+                 serverurl="${sf.serverurl}"
+                 deployRoot="src"
+                 runAllTests="true"
+                 checkOnly="true"/>
+    </target>
+
+    <target name="pushNoTest">
+      <sf:deploy username="${sf.username}" 
+                 password="${sf.password}" 
+                 serverurl="${sf.serverurl}"
+                 deployRoot="src" 
+                 runAllTests="false">
+      </sf:deploy>
+    </target>
+
+    <target name="push">
+      <sf:deploy username="${sf.username}" 
+                 password="${sf.password}" 
+                 serverurl="${sf.serverurl}"
+                 deployRoot="src" 
+                 runAllTests="true">
+      </sf:deploy>
+    </target>
+
+    <target name="pull">
+      <sf:retrieve username="${sf.username}" 
+                   password="${sf.password}" 
+                   serverurl="${sf.serverurl}"
+                   retrieveTarget="src" 
+                   unpackaged="src/package.xml"/>
+    </target>
+
+    <target name="rm">
+      <sf:deploy username="${sf.username}" 
+                 password="${sf.password}" 
+                 serverurl="${sf.serverurl}"
+                 deployRoot="src/destructiveChanges"/>
+    </target>
+    
+    <target name="pushObjects">
+      <sf:deploy username="${sf.username}" 
+                 password="${sf.password}" 
+                 serverurl="${sf.serverurl}" 
+                 deployRoot="src/deployObjects" 
+                 runAllTests="true">
+      </sf:deploy>
+    </target>
+
+    <target name="pullObjects">
+      <sf:retrieve username="${sf.username}" 
+                   password="${sf.password}" 
+                   serverurl="${sf.serverurl}"
+                   retrieveTarget="src/deployObjects" 
+                   unpackaged="src/deployObjects/package.xml">
+      </sf:retrieve>
+    </target>
+</project>

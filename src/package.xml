@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>MobilePollVoteController</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>MobilePoll</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>Title</members>
+        <members>Button</members>
+        <members>SelectAnswerMessage</members>
+        <members>SuccessMessage</members>
+        <name>CustomLabel</name>
+    </types>
+    <types>
+        <members>Mobile_Poll_Answer__c</members>
+        <members>Mobile_Poll_Vote__c</members>
+        <members>Mobile_Poll__c</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>css</members>
+        <members>js</members>
+        <name>StaticResource</name>
+    </types>
+    <version>24.0</version>
+</Package>

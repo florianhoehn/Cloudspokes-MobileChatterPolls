@@ -1,0 +1,80 @@
+<apex:page standardStylesheets="false" sidebar="false" showHeader="false" standardController="Mobile_Poll__c" extensions="MobilePollVoteController">
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" />
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.mobile/1.1.0/jquery.mobile-1.1.0.min.js" />
+    <link rel="stylesheet" href="{!URLFOR($Resource.css)}" />
+    <script type="text/javascript" src="{!URLFOR($Resource.js)}" />
+
+    <!-- Home -->
+    <div data-role="page" id="mobilePollPage">
+        <div data-theme="a" data-role="header">
+            <h3>
+                {!$Label.Title}
+            </h3>
+        </div>
+        <div data-role="content" style="padding: 15px">
+            <fieldset data-role="controlgroup" class="ui-corner-all ui-controlgroup ui-controlgroup-vertical">
+                <div class="ui-controlgroup-label" role="heading">{!Mobile_Poll__c.Question__c}</div>
+                <div class="ui-controlgroup-controls">
+                    <apex:variable var="counter" value="{!1}" />
+                    <apex:repeat value="{!Mobile_Poll__c.Mobile_Poll_Answers__r}" var="answer">
+                        <input type="radio" name="radio-choice" id="radio-choice-{!counter}" value="choice-{!counter}"  />
+                        <label for="radio-choice-{!counter}">{!answer.Answer__c}</label>
+                        <apex:variable var="counter" value="{!counter + 1}" />
+                    </apex:repeat>
+                </div>
+            </fieldset>
+
+            <ul data-role="listview" data-divider-theme="b" data-inset="true">
+                <li data-theme="b">
+                    <a href="#messagePage" data-transition="slide" onClick="vote()">
+                        {!$Label.Button}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Message -->
+    <div data-role="page" id="messagePage">
+        <div data-role="content" style="padding: 15px">
+            <div>
+                <p>
+                </p>
+                <p style="text-align: center;">
+                    <span id='Message' style="font-size: large;">
+                        <strong>
+
+                        </strong>
+                    </span>
+                </p>
+                <p>
+                </p>
+            </div>
+        </div>
+    </div>
+    <script>
+        function vote() {
+            var mobilePollId = '{!$CurrentPage.parameters.id}';
+            var answerDiv = $('input:checked');
+            if(answerDiv.attr('id') != undefined) {
+                var answer = $('label[for="' + answerDiv.attr('id') + '"]').text().trim();
+                Visualforce.remoting.Manager.invokeAction(
+                    '{!$RemoteAction.MobilePollVoteController.vote}',
+                    mobilePollId,
+                    answer,
+                    function(result, event){
+                        if (event.status) {
+                            $('#Message').text(result);
+                        }
+                    },
+                    {escape: true}
+                );
+            } else {
+                $('#Message').text('{!$Label.SelectAnswerMessage}');
+            }
+        }
+    </script>
+</apex:page>
