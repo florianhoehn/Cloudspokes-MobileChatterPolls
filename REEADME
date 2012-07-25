@@ -1,0 +1,12 @@
+INSTRUCTIONS:
+
+Create a 'Mobile_Poll__c' record with a question, then create several answers as child records ('Mobile_Poll_Answer__c').
+
+Go to the Mobile Poll detail page, click on the 'Mobile Poll Page' button and vote!
+
+Go to the Chatter Homepage to see the link post that was created!
+
+
+I tried to keep the code footprint as small and tidy as possible. Additionally I tried to use as much of the standardController functionality as possible.
+
+I am sorry I didn't have the time to upload a youtube video.
