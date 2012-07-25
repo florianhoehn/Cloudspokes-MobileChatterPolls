@@ -9,10 +9,14 @@
         <name>ApexPage</name>
     </types>
     <types>
-        <members>Title</members>
+        <members>vote</members>
+        <name>ApexTrigger</name>
+    </types>
+    <types>
         <members>Button</members>
         <members>SelectAnswerMessage</members>
         <members>SuccessMessage</members>
+        <members>Title</members>
         <name>CustomLabel</name>
     </types>
     <types>

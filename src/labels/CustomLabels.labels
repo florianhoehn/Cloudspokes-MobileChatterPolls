@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
-        <fullName>Title</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Title</shortDescription>
-        <value>Mobile Poll</value>
-    </labels>
-    <labels>
         <fullName>Button</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -27,5 +20,12 @@
         <protected>true</protected>
         <shortDescription>SuccessMessage</shortDescription>
         <value>Thanks for participating!</value>
+    </labels>
+    <labels>
+        <fullName>Title</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Title</shortDescription>
+        <value>Mobile Poll</value>
     </labels>
 </CustomLabels>
